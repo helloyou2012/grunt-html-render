@@ -19,15 +19,7 @@ module.exports = function(grunt) {
 
   var html_render = function(src, dest, options, cb) {
     src.forEach(function(file) {
-      swig.renderFile(file, {}, function(err, data) {
-        if (err) {
-          cb(err);
-        } else {
-          grunt.file.write(dest, data);
-          cb(null);
-        }
-      });
-      
+      grunt.file.write(dest, swig.renderFile(file, {}));
     });
   };
 
